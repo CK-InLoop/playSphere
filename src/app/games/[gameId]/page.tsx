@@ -90,10 +90,10 @@ export default function GamePage({ params }: { params: { gameId: string } }) {
 export async function generateStaticParams() {
   return [
     { gameId: 'tic-tac-toe' },
+    { gameId: 'memory-match' },
     { gameId: '2048' },
     { gameId: 'snake' },
     { gameId: 'flappy-bird' },
-    { gameId: 'memory' },
     { gameId: 'wordle' },
     { gameId: 'hangman' },
     { gameId: 'reaction' },

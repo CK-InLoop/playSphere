@@ -44,13 +44,13 @@ const allGames: Game[] = [
     path: '/games/flappy-bird',
   },
   {
-    id: 'memory',
-    title: 'Memory Game',
+    id: 'memory-match',
+    title: 'Memory Match',
     description: 'Find all matching pairs of cards',
     icon: '🎴',
     color: 'bg-purple-500',
     category: 'puzzle',
-    path: '/games/memory',
+    path: '/games/memory-match',
   },
   {
     id: 'wordle',
