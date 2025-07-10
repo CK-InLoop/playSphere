@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { Game } from '@/types';
+import { MotionDiv } from './motion/MotionDiv';
 
 interface GameCardProps {
   game: Game;
@@ -8,7 +8,7 @@ interface GameCardProps {
 
 export default function GameCard({ game }: GameCardProps) {
   return (
-    <motion.div
+    <MotionDiv
       whileHover={{ y: -5, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
       transition={{ duration: 0.2 }}
       className="rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg"
@@ -30,6 +30,6 @@ export default function GameCard({ game }: GameCardProps) {
           Play Now
         </Link>
       </div>
-    </motion.div>
+    </MotionDiv>
   );
 }
