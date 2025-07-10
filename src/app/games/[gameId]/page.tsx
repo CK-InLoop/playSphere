@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { FiArrowLeft } from 'react-icons/fi';
+import dynamic from 'next/dynamic';
 
 // This would typically fetch the game data from an API or data file
 const getGame = (id: string) => {
@@ -11,11 +12,21 @@ const getGame = (id: string) => {
       description: 'Classic two-player strategy game on a 3x3 grid',
       instructions: 'Players take turns marking a square with their symbol (X or O). The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.',
       category: 'board',
+      component: 'TicTacToe',
     },
     // Add other games here...
   ];
 
   return games.find(game => game.id === id);
+};
+
+// Dynamically import game components with no SSR
+const GameComponent = ({ gameId }: { gameId: string }) => {
+  const Game = dynamic(
+    () => import(`@/components/games/${gameId}`),
+    { ssr: false }
+  );
+  return <Game />;
 };
 
 export default function GamePage({ params }: { params: { gameId: string } }) {
@@ -45,16 +56,22 @@ export default function GamePage({ params }: { params: { gameId: string } }) {
           <p className="text-gray-700 dark:text-gray-300">{game.instructions}</p>
         </div>
 
-        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-lg p-6 text-center">
-          <p className="text-blue-800 dark:text-blue-200 mb-4">
-            This game is coming soon! Check back later to play {game.title}.
-          </p>
-          <Link 
-            href="/games" 
-            className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-          >
-            Browse other games
-          </Link>
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+          {game.component ? (
+            <GameComponent gameId={game.component} />
+          ) : (
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-lg p-6 text-center">
+              <p className="text-blue-800 dark:text-blue-200">
+                This game is coming soon! Check back later to play {game.title}.
+              </p>
+              <Link 
+                href="/games" 
+                className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                Browse other games
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
