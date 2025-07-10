@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { FiArrowRight, FiAward, FiClock, FiGamepad, FiGlobe, FiUsers } from 'react-icons/fi';
+import { FiArrowRight, FiAward, FiClock, FiGlobe, FiUsers, FiPackage } from 'react-icons/fi';
 import GameCard from '@/components/GameCard';
+import { Game } from '@/types';
 
 export default function Home() {
-  const featuredGames = [
+  const featuredGames: Game[] = [
     {
       id: 'tic-tac-toe',
       title: 'Tic Tac Toe',
@@ -11,7 +12,7 @@ export default function Home() {
       icon: '⭕',
       color: 'bg-blue-500',
       category: 'board',
-      component: null as any,
+      path: '/games/tic-tac-toe'
     },
     {
       id: '2048',
@@ -20,7 +21,7 @@ export default function Home() {
       icon: '🔢',
       color: 'bg-yellow-500',
       category: 'puzzle',
-      component: null as any,
+      path: '/games/2048',
     },
     {
       id: 'snake',
@@ -29,13 +30,13 @@ export default function Home() {
       icon: '🐍',
       color: 'bg-green-500',
       category: 'arcade',
-      component: null as any,
+      path: '/games/snake',
     },
   ];
 
   const features = [
     {
-      icon: <FiGamepad className="w-8 h-8 text-indigo-500" />,
+      icon: <FiPackage className="w-8 h-8 text-indigo-500" />,
       title: '10+ Games',
       description: 'Wide variety of games to choose from',
     },
@@ -145,79 +146,6 @@ export default function Home() {
           Start Playing Now <FiArrowRight className="ml-2 w-5 h-5" />
         </Link>
       </section>
-    </div>
-  );
-}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
