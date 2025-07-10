@@ -14,6 +14,14 @@ const getGame = (id: string) => {
       category: 'board',
       component: 'TicTacToe',
     },
+    {
+      id: 'memory-match',
+      title: 'Memory Match',
+      description: 'Test your memory by matching pairs of cards',
+      instructions: 'Flip over two cards at a time to find matching pairs. Try to find all pairs in the fewest moves possible!',
+      category: 'puzzle',
+      component: 'MemoryMatch',
+    },
     // Add other games here...
   ];
 
