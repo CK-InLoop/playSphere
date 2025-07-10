@@ -1,3 +1,5 @@
+'use client';
+
 import { FiSearch } from 'react-icons/fi';
 import GameCard from '@/components/GameCard';
 import { Game } from '@/types';
