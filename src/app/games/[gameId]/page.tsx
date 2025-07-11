@@ -86,6 +86,14 @@ const getGame = (id: string) => {
       category: 'puzzle',
       component: 'Game2048',
     },
+    {
+      id: 'hangman',
+      title: 'Hangman',
+      description: 'Guess the hidden word before the hangman is complete!',
+      instructions: 'Type letters or click the on-screen keyboard to guess the word. You have 6 incorrect guesses before the game is over.',
+      category: 'word',
+      component: 'Hangman',
+    },
     // Add other games here...
   ];
 
