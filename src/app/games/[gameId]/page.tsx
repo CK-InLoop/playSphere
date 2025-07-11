@@ -63,6 +63,22 @@ const getGame = (id: string) => {
       component: 'WhackAMole',
     },
     {
+      id: 'flappy-bird',
+      title: 'Flappy Bird',
+      description: 'Navigate the bird through the pipes!',
+      instructions: 'Click or press SPACE to make the bird flap. Avoid the pipes and don\'t hit the ground or ceiling!',
+      category: 'arcade',
+      component: 'FlappyBird',
+    },
+    {
+      id: 'wordle',
+      title: 'Wordle',
+      description: 'Guess the hidden 5-letter word',
+      instructions: 'Type a 5-letter word and press Enter. Green = correct letter & position, Yellow = correct letter wrong position, Gray = letter not in word.',
+      category: 'puzzle',
+      component: 'Wordle',
+    },
+    {
       id: '2048',
       title: '2048',
       description: 'Slide tiles to combine them and reach the 2048 tile!',
