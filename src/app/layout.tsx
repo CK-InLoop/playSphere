@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import { Toaster } from 'react-hot-toast';
+import { GameProvider } from '@/contexts/GameContext';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -39,15 +40,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${robotoMono.variable} font-sans antialiased bg-gray-50 dark:bg-gray-900 min-h-screen`}>
-        <ThemeProvider>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-grow pt-16">
-              {children}
-            </main>
-            <Toaster position="bottom-center" />
-          </div>
-        </ThemeProvider>
+        <GameProvider>
+          <ThemeProvider>
+            <div className="min-h-screen flex flex-col">
+              <Navbar />
+              <main className="flex-grow pt-16">
+                {children}
+              </main>
+              <Toaster position="bottom-center" />
+            </div>
+          </ThemeProvider>
+        </GameProvider>
       </body>
     </html>
   );

@@ -47,6 +47,14 @@ const getGame = (id: string) => {
       component: 'NumberDrop',
     },
     {
+      id: 'snake',
+      title: 'Snake',
+      description: 'Classic snake game - eat the food and grow longer!',
+      instructions: 'Use arrow keys to move the snake. Eat the red food to grow longer. Avoid hitting the walls or yourself!',
+      category: 'arcade',
+      component: 'Snake',
+    },
+    {
       id: '2048',
       title: '2048',
       description: 'Slide tiles to combine them and reach the 2048 tile!',
