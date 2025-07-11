@@ -56,36 +56,26 @@ const Snake = () => {
       const head = { ...prevSnake[0] };
       const dir = directionRef.current;
 
-      // Move head
+      // Move head with wrapping
       switch (dir) {
         case 'UP':
-          head.y -= 1;
+          head.y = head.y <= 0 ? GRID_SIZE - 1 : head.y - 1;
           break;
         case 'DOWN':
-          head.y += 1;
+          head.y = head.y >= GRID_SIZE - 1 ? 0 : head.y + 1;
           break;
         case 'LEFT':
-          head.x -= 1;
+          head.x = head.x <= 0 ? GRID_SIZE - 1 : head.x - 1;
           break;
         case 'RIGHT':
-          head.x += 1;
+          head.x = head.x >= GRID_SIZE - 1 ? 0 : head.x + 1;
           break;
-      }
-
-      // Check collision with walls
-      if (
-        head.x < 0 ||
-        head.x >= GRID_SIZE ||
-        head.y < 0 ||
-        head.y >= GRID_SIZE
-      ) {
-        setGameOver(true);
-        return prevSnake;
       }
 
       // Check collision with self
       if (isPositionOccupied(head, prevSnake)) {
         setGameOver(true);
+        toast.error('Game Over! Snake hit itself!');
         return prevSnake;
       }
 
@@ -227,7 +217,7 @@ const Snake = () => {
         : isPaused 
           ? 'Game Paused' 
           : `Score: ${score}`}
-      instructions="Use arrow keys to move the snake. Eat the red food to grow longer. Avoid hitting the walls or yourself!"
+      instructions="Use arrow keys to move the snake. Eat the red food to grow longer. The snake will wrap around the screen edges. Game ends only if the snake hits itself!"
     >
       <div className="w-full max-w-md mx-auto">
         {!gameStarted && !gameOver && (

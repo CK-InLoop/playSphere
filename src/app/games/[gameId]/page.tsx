@@ -50,9 +50,17 @@ const getGame = (id: string) => {
       id: 'snake',
       title: 'Snake',
       description: 'Classic snake game - eat the food and grow longer!',
-      instructions: 'Use arrow keys to move the snake. Eat the red food to grow longer. Avoid hitting the walls or yourself!',
+      instructions: 'Use arrow keys to move the snake. Eat the red food to grow longer. The snake will wrap around the screen edges. Game ends only if the snake hits itself!',
       category: 'arcade',
       component: 'Snake',
+    },
+    {
+      id: 'whack-a-mole',
+      title: 'Whack-a-Mole',
+      description: 'Test your reflexes by whacking moles as they pop up!',
+      instructions: 'Click the moles as they appear to score points. Be quick - they won\'t stay up for long! Game lasts for 30 seconds.',
+      category: 'arcade',
+      component: 'WhackAMole',
     },
     {
       id: '2048',
