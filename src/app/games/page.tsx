@@ -97,6 +97,33 @@ const allGames: Game[] = [
     category: 'arcade',
     path: '/games/breakout',
   },
+  {
+    id: 'queens',
+    title: 'Queens',
+    description: 'Place queens on the board so none can attack each other',
+    icon: '👑',
+    color: 'bg-purple-600',
+    category: 'puzzle',
+    path: '/games/queens'
+  },
+  {
+    id: 'binary-puzzle',
+    title: 'Binary Puzzle',
+    description: 'Fill the grid with 0s and 1s following the rules',
+    icon: '🔢',
+    color: 'bg-indigo-600',
+    category: 'puzzle',
+    path: '/games/binary-puzzle'
+  },
+  {
+    id: 'red-light-green-light',
+    title: 'Red Light, Green Light',
+    description: 'Test your reflexes in this Squid Game classic!',
+    icon: '🚦',
+    color: 'bg-red-500',
+    category: 'arcade',
+    path: '/games/red-light-green-light'
+  },
 ];
 
 const categories: GameCategory[] = ['all', 'arcade', 'puzzle', 'board', 'word', 'action'];
