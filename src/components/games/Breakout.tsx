@@ -156,14 +156,15 @@ export default function Breakout() {
             b.status = 0;
             const points = 10;
             setScore(prev => {
-              const newScore = prev + points;
-              if (newScore > highScore) {
-                setHighScore(newScore);
-                localStorage.setItem('breakoutHighScore', newScore.toString());
-              }
-              updateScore(10);
-              return newScore;
-            });
+                const newScore = prev + points;
+                if (newScore > highScore) {
+                  setHighScore(newScore);
+                  localStorage.setItem('breakoutHighScore', newScore.toString());
+                  updateScore('breakout', newScore, 'highScore');
+                }
+                updateScore('breakout', points, 'score');
+                return newScore;
+              });
             
             // Check if all bricks are destroyed
             if (bricks.current.every(column => column.every(brick => brick.status === 0))) {
