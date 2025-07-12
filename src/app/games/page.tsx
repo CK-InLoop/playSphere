@@ -71,13 +71,13 @@ const allGames: Game[] = [
     path: '/games/hangman',
   },
   {
-    id: 'reaction',
+    id: 'reaction-time',
     title: 'Reaction Time',
     description: 'Test your reaction speed',
     icon: '⏱️',
     color: 'bg-cyan-500',
     category: 'action',
-    path: '/games/reaction',
+    path: '/games/reaction-time',
   },
   {
     id: 'math-quiz',

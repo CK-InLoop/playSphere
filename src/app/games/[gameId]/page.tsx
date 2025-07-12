@@ -55,6 +55,14 @@ const getGame = (id: string) => {
       component: 'Snake',
     },
     {
+      id: 'reaction-time',
+      title: 'Reaction Time',
+      description: 'Test your reflexes with this quick reaction game',
+      instructions: 'Click as soon as you see the screen change color. Try to get the fastest reaction time!',
+      category: 'reflex',
+      component: 'ReactionTime',
+    },
+    {
       id: 'whack-a-mole',
       title: 'Whack-a-Mole',
       description: 'Test your reflexes by whacking moles as they pop up!',
@@ -73,10 +81,18 @@ const getGame = (id: string) => {
     {
       id: 'wordle',
       title: 'Wordle',
-      description: 'Guess the hidden 5-letter word',
-      instructions: 'Type a 5-letter word and press Enter. Green = correct letter & position, Yellow = correct letter wrong position, Gray = letter not in word.',
-      category: 'puzzle',
+      description: 'Guess the hidden word in 6 tries',
+      instructions: 'Guess the 5-letter word. Green means correct letter in the correct position. Yellow means correct letter in the wrong position.',
+      category: 'word',
       component: 'Wordle',
+    },
+    {
+      id: 'breakout',
+      title: 'Breakout',
+      description: 'Destroy all the bricks with the ball!',
+      instructions: 'Use arrow keys or mouse to move the paddle. Press SPACE to pause. Don\'t let the ball fall!',
+      category: 'arcade',
+      component: 'Breakout',
     },
     {
       id: '2048',
@@ -168,7 +184,7 @@ export async function generateStaticParams() {
     { gameId: 'flappy-bird' },
     { gameId: 'wordle' },
     { gameId: 'hangman' },
-    { gameId: 'reaction' },
+    { gameId: 'reaction-time' },
     { gameId: 'math-quiz' },
     { gameId: 'breakout' },
   ];
