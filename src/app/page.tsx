@@ -15,15 +15,6 @@ export default function Home() {
       path: '/games/tic-tac-toe'
     },
     {
-      id: 'breakout',
-      title: 'Breakout',
-      description: 'Destroy all the bricks with the ball!',
-      icon: '🔨',
-      color: 'bg-purple-500',
-      category: 'arcade',
-      path: '/games/breakout',
-    },
-    {
       id: '2048',
       title: '2048',
       description: 'Slide tiles to combine them and reach 2048!',

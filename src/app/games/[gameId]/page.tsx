@@ -110,6 +110,14 @@ const getGame = (id: string) => {
       category: 'word',
       component: 'Hangman',
     },
+    {
+      id: 'math-quiz',
+      title: 'Math Quiz',
+      description: 'Test your math skills with this fast-paced arithmetic challenge!',
+      instructions: 'Solve as many math problems as you can in 30 seconds. Choose the correct answer from the options. Each correct answer is worth 10 points!',
+      category: 'puzzle',
+      component: 'MathQuiz',
+    },
     // Add other games here...
   ];
 
