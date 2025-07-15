@@ -6,24 +6,6 @@ import { Game } from '@/types';
 export default function Home() {
   const featuredGames: Game[] = [
     {
-      id: 'queens',
-      title: 'Queens',
-      description: 'Place queens on the board so none can attack each other',
-      icon: '👑',
-      color: 'bg-purple-600',
-      category: 'puzzle',
-      path: '/games/queens'
-    },
-    {
-      id: 'red-light-green-light',
-      title: 'Red Light, Green Light',
-      description: 'Test your reflexes in this Squid Game classic!',
-      icon: '🚦',
-      color: 'bg-red-500',
-      category: 'arcade',
-      path: '/games/red-light-green-light'
-    },
-    {
       id: 'tic-tac-toe',
       title: 'Tic Tac Toe',
       description: 'Classic two-player strategy game on a 3x3 grid',
@@ -31,6 +13,24 @@ export default function Home() {
       color: 'bg-blue-500',
       category: 'board',
       path: '/games/tic-tac-toe'
+    },
+    {
+      id: 'snake',
+      title: 'Snake',
+      description: 'Grow your snake by eating food, but don\'t hit the walls!',
+      icon: '🐍',
+      color: 'bg-emerald-500',
+      category: 'arcade',
+      path: '/games/snake',
+    },
+    {
+      id: 'flappy-bird',
+      title: 'Flappy Bird',
+      description: 'Navigate a bird through pipes without hitting them',
+      icon: '🐦',
+      color: 'bg-red-500',
+      category: 'arcade',
+      path: '/games/flappy-bird',
     },
   ];
 
