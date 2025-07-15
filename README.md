@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 PlaySphere
 
-## Getting Started
+**PlaySphere** is a multi-game web application that offers a collection of fun, interactive games — all in one place! Choose from a variety of games on the dashboard and dive into gameplay with just one click.
 
-First, run the development server:
+🟢 **Live at**: [https://play-sphere-phi.vercel.app/](https://play-sphere-phi.vercel.app/)
 
-```bash
+---
+
+## 🌟 Features
+
+- 🎲 Multiple games like Tic Tac Toe, Snake, 2048, Flappy Bird, and more  
+- 🧠 Fun and challenging experiences — logic, arcade, word, and brain games  
+- 💻 Fully responsive UI for desktop and mobile  
+- ⚡ Smooth routing and fast gameplay using React  
+- 🎨 Clean, modern UI styled with Tailwind CSS  
+- 🚀 Easy to expand with more games  
+- 🕶️ Dark/Light mode  
+
+---
+
+## 🕹️ Games Included
+
+- ✅ Tic Tac Toe  
+- ✅ Sudoku  
+- ✅ Snake Game  
+- ✅ Flappy Bird Clone  
+- ✅ Memory Flip Cards  
+- ✅ Wordle Clone  
+- ✅ Hangman  
+- ✅ Reaction Time Tester  
+- ✅ Math Quiz  
+- ✅ Breakout  
+- ✅ Queens  
+- ✅ Binary Puzzle  
+- ✅ Red Light, Green Light  
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+git clone https://github.com/your-username/playsphere.git
+cd playsphere
+### 2. Install Dependencies
+npm install
+### 3. Run the App
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Then visit: http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🛠 Built With
+- Next.js – React framework for production-ready apps with built-in routing and SSR/SSG support
+- TypeScript – Strongly typed superset of JavaScript
+- Tailwind CSS – Utility-first CSS framework for responsive and modern UI
+- React – Core library for building the user interface
+- HTML5 Canvas API – Used for games like Snake, Breakout, etc.
+- LocalStorage API – For storing high scores or game progress on the client side
+- React Icons – Popular icon pack for consistent UI
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📦 Future Enhancements
+✅ Leaderboard with persistent scores
+✅ User authentication for tracking progress
+✅ Multiplayer rooms (real-time)
+✅ More games like Chess, Ludo, Connect Four
