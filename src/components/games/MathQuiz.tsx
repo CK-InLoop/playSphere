@@ -205,13 +205,13 @@ export default function MathQuiz() {
 
             {currentQuestion && (
               <motion.div 
-                className="w-full max-w-md bg-white rounded-xl shadow-lg p-6 mb-8"
+                className="w-full max-w-md bg-white dark:bg-gray-700 rounded-xl shadow-lg p-4 sm:p-6 mb-8"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.3 }}
                 key={`${currentQuestion.num1}-${currentQuestion.operator}-${currentQuestion.num2}`}
               >
-                <div className="text-4xl font-bold text-center mb-8">
+                <div className="text-3xl sm:text-4xl font-bold text-center mb-8">
                   {currentQuestion.num1} {getOperatorSymbol(currentQuestion.operator)} {currentQuestion.num2} = ?
                 </div>
                 
@@ -221,14 +221,14 @@ export default function MathQuiz() {
                       key={index}
                       onClick={() => handleAnswer(option)}
                       disabled={selectedAnswer !== null}
-                      className={`p-4 text-lg font-medium rounded-lg transition-colors ${
+                      className={`p-3 sm:p-4 text-base sm:text-lg font-medium rounded-lg transition-colors ${
                         selectedAnswer === null
-                          ? 'bg-blue-100 hover:bg-blue-200 text-blue-800'
+                          ? 'bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-800/40 text-blue-800 dark:text-blue-200'
                           : option === currentQuestion.answer
-                          ? 'bg-green-100 text-green-800 border-2 border-green-400'
+                          ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border-2 border-green-400'
                           : selectedAnswer === option
-                          ? 'bg-red-100 text-red-800 border-2 border-red-400'
-                          : 'bg-gray-100 text-gray-800'
+                          ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border-2 border-red-400'
+                          : 'bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200'
                       }`}
                       whileHover={{ scale: selectedAnswer === null ? 1.03 : 1 }}
                       whileTap={{ scale: selectedAnswer === null ? 0.98 : 1 }}

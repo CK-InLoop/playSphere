@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 
@@ -308,6 +308,33 @@ export default function Game2048() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [grid, gameOver, won, keepPlaying]);
 
+  // Touch swipe support
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartRef.current) return;
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - touchStartRef.current.x;
+    const dy = touch.clientY - touchStartRef.current.y;
+    const minSwipe = 30;
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+      if (Math.abs(dx) > minSwipe) {
+        moveTiles(dx > 0 ? 'right' : 'left');
+      }
+    } else {
+      if (Math.abs(dy) > minSwipe) {
+        moveTiles(dy > 0 ? 'down' : 'up');
+      }
+    }
+    touchStartRef.current = null;
+  };
+
   // Get background color based on tile value
   const getTileColor = (value: number) => {
     const colors: Record<number, string> = {
@@ -375,7 +402,11 @@ export default function Game2048() {
       </div>
 
       {/* Game Board */}
-      <div className="bg-gray-300 dark:bg-gray-600 p-2 rounded-lg mb-6">
+      <div
+        className="bg-gray-300 dark:bg-gray-600 p-2 rounded-lg mb-6 touch-none"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <div className="relative">
           {/* Grid Background */}
           <div className="grid grid-cols-4 gap-2">

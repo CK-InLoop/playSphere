@@ -32,7 +32,7 @@ export default function LeaderboardPage() {
       </div>
 
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
-        <div className="grid grid-cols-12 bg-gray-50 dark:bg-gray-700 p-4 font-medium text-gray-700 dark:text-gray-200">
+        <div className="hidden sm:grid grid-cols-12 bg-gray-50 dark:bg-gray-700 p-4 font-medium text-gray-700 dark:text-gray-200">
           <div className="col-span-1">#</div>
           <div className="col-span-5">Game</div>
           <div className="col-span-3">Player</div>
@@ -41,17 +41,17 @@ export default function LeaderboardPage() {
         
         <div className="divide-y divide-gray-200 dark:divide-gray-700">
           {leaderboardData.map((entry, index) => (
-            <div key={entry.id} className="grid grid-cols-12 p-4 items-center hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-              <div className="col-span-1 font-medium text-gray-500 dark:text-gray-400">
+            <div key={entry.id} className="grid grid-cols-2 sm:grid-cols-12 gap-1 sm:gap-0 p-3 sm:p-4 items-center hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+              <div className="sm:col-span-1 font-medium text-gray-500 dark:text-gray-400">
                 {index === 0 ? (
                   <span className="text-yellow-500"><FiStar className="inline-block" /></span>
                 ) : (
                   index + 1
                 )}
               </div>
-              <div className="col-span-5 font-medium text-gray-900 dark:text-white">{entry.game}</div>
-              <div className="col-span-3 text-gray-600 dark:text-gray-300">{entry.player}</div>
-              <div className="col-span-3 text-right font-semibold text-indigo-600 dark:text-indigo-400">
+              <div className="sm:col-span-5 font-medium text-gray-900 dark:text-white text-right sm:text-left">{entry.game}</div>
+              <div className="sm:col-span-3 text-gray-600 dark:text-gray-300">{entry.player}</div>
+              <div className="sm:col-span-3 text-right font-semibold text-indigo-600 dark:text-indigo-400">
                 {entry.score.toLocaleString()}
               </div>
             </div>

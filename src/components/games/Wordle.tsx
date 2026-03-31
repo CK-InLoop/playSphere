@@ -25,7 +25,7 @@ interface TileProps {
 }
 
 const Tile = ({ letter, state, position, isActive = false }: TileProps) => {
-  const baseStyles = 'w-12 h-12 flex items-center justify-center text-2xl font-bold rounded-md border-2 transition-all duration-200';
+  const baseStyles = 'w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl font-bold rounded-md border-2 transition-all duration-200';
   
   const stateStyles = {
     empty: 'border-gray-300 bg-white dark:bg-gray-700 dark:border-gray-600',
@@ -337,7 +337,7 @@ const Wordle = () => {
                 return (
                   <motion.button
                     key={key}
-                    className={`w-8 h-10 flex items-center justify-center rounded-md font-medium ${
+                    className={`w-7 h-9 sm:w-8 sm:h-10 flex items-center justify-center rounded-md text-sm sm:text-base font-medium ${
                       state === 'correct' ? 'bg-green-500 text-white' :
                       state === 'present' ? 'bg-yellow-500 text-white' :
                       state === 'absent' ? 'bg-gray-500 text-white dark:bg-gray-600' :

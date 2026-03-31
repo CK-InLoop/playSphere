@@ -90,7 +90,7 @@ export default function Hangman() {
     return word.split('').map((letter, index) => (
       <span 
         key={index} 
-        className="inline-block w-8 h-10 mx-1 text-2xl font-bold text-center border-b-2 border-gray-300 dark:border-gray-600"
+        className="inline-block w-6 h-8 sm:w-8 sm:h-10 mx-0.5 sm:mx-1 text-lg sm:text-2xl font-bold text-center border-b-2 border-gray-300 dark:border-gray-600"
       >
         {guessedLetters.includes(letter) ? letter : ''}
       </span>
@@ -102,13 +102,13 @@ export default function Hangman() {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     
     return (
-      <div className="flex flex-wrap justify-center gap-2 mt-6 max-w-md mx-auto">
+      <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mt-6 max-w-md mx-auto">
         {letters.map(letter => {
           const isGuessed = guessedLetters.includes(letter);
           const isWrong = isGuessed && !word.includes(letter);
           const isCorrect = isGuessed && word.includes(letter);
           
-          let buttonClass = 'w-10 h-10 rounded-md flex items-center justify-center font-medium ';
+          let buttonClass = 'w-8 h-8 sm:w-10 sm:h-10 rounded-md flex items-center justify-center text-sm sm:text-base font-medium ';
           
           if (isWrong) {
             buttonClass += 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200';

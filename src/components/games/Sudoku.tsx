@@ -295,7 +295,7 @@ export default function Sudoku() {
         </button>
       </div>
       
-      <div className="grid grid-cols-9 gap-0.5 bg-gray-800 p-1 rounded">
+      <div className="grid grid-cols-9 gap-0.5 bg-gray-800 dark:bg-gray-300 p-1 rounded w-full max-w-[360px] mx-auto">
         {board.map((row, rowIndex) => (
           <>
             {row.map((cell, colIndex) => {
@@ -307,17 +307,17 @@ export default function Sudoku() {
                 <div
                   key={`${rowIndex}-${colIndex}`}
                   className={`
-                    w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-lg font-medium
-                    ${cell.isGiven ? 'font-bold bg-white' : 'bg-gray-100'}
-                    ${cell.isHighlighted ? 'bg-yellow-100' : ''}
-                    ${cell.isInvalid ? 'text-red-500' : cell.isGiven ? 'text-black' : 'text-blue-600'}
+                    aspect-square flex items-center justify-center text-sm sm:text-lg font-medium
+                    ${cell.isGiven ? 'font-bold bg-white dark:bg-gray-800' : 'bg-gray-100 dark:bg-gray-700'}
+                    ${cell.isHighlighted ? 'bg-yellow-100 dark:bg-yellow-900/40' : ''}
+                    ${cell.isInvalid ? 'text-red-500' : cell.isGiven ? 'text-black dark:text-white' : 'text-blue-600 dark:text-blue-400'}
                     ${isSelected ? 'ring-2 ring-blue-500 z-10' : ''}
-                    ${isBoxTop ? 'border-t-2 border-gray-800' : 'border-t border-gray-300'}
-                    ${isBoxLeft ? 'border-l-2 border-gray-800' : 'border-l border-gray-300'}
-                    ${rowIndex === 8 ? 'border-b-2 border-gray-800' : ''}
-                    ${colIndex === 8 ? 'border-r-2 border-gray-800' : ''}
+                    ${isBoxTop ? 'border-t-2 border-gray-800 dark:border-gray-300' : 'border-t border-gray-300 dark:border-gray-600'}
+                    ${isBoxLeft ? 'border-l-2 border-gray-800 dark:border-gray-300' : 'border-l border-gray-300 dark:border-gray-600'}
+                    ${rowIndex === 8 ? 'border-b-2 border-gray-800 dark:border-gray-300' : ''}
+                    ${colIndex === 8 ? 'border-r-2 border-gray-800 dark:border-gray-300' : ''}
                     cursor-pointer select-none
-                  `}
+                  `}}
                   onClick={() => handleCellClick(rowIndex, colIndex)}
                 >
                   {cell.value || ''}
@@ -328,18 +328,18 @@ export default function Sudoku() {
         ))}
       </div>
       
-      <div className="mt-6 grid grid-cols-5 gap-2">
+      <div className="mt-6 grid grid-cols-5 gap-2 w-full max-w-[360px] mx-auto">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
           <button
             key={num}
-            className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors text-lg font-medium"
+            className="aspect-square flex items-center justify-center bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors text-base sm:text-lg font-medium"
             onClick={() => handleNumberClick(num)}
           >
             {num}
           </button>
         ))}
         <button
-          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-200 rounded hover:bg-gray-300 transition-colors text-lg font-medium"
+          className="aspect-square flex items-center justify-center bg-gray-200 dark:bg-gray-600 rounded hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors text-base sm:text-lg font-medium"
           onClick={() => {
             if (selectedCell) {
               const [row, col] = selectedCell;
@@ -357,10 +357,10 @@ export default function Sudoku() {
       </div>
       
       {isComplete && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl text-center">
-            <h3 className="text-2xl font-bold mb-4">Congratulations! 🎉</h3>
-            <p className="mb-4">You solved the Sudoku puzzle with {mistakes} mistakes!</p>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl text-center">
+            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Congratulations! 🎉</h3>
+            <p className="mb-4 text-gray-700 dark:text-gray-300">You solved the Sudoku puzzle with {mistakes} mistakes!</p>
             <button
               onClick={initializeGame}
               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"

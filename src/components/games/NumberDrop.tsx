@@ -17,7 +17,7 @@ type Position = {
 
 const GRID_WIDTH = 5;
 const GRID_HEIGHT = 10;
-const CELL_SIZE = 60;
+const CELL_SIZE_DEFAULT = 60;
 const GRAVITY_INTERVAL = 1000; // 1 second
 const POSSIBLE_VALUES = [2, 4, 8, 16];
 
@@ -239,11 +239,11 @@ export default function NumberDrop() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold mb-4">Number Drop</h1>
+    <div className="flex flex-col items-center justify-center min-h-[80vh] bg-gray-100 dark:bg-gray-900 p-4">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 dark:text-white">Number Drop</h1>
       
-      <div className="mb-4 flex gap-4">
-        <div className="text-xl font-semibold">Score: {score}</div>
+      <div className="mb-4 flex flex-wrap gap-2 sm:gap-4 justify-center">
+        <div className="text-lg sm:text-xl font-semibold dark:text-white">Score: {score}</div>
         <button 
           onClick={togglePause}
           className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -259,32 +259,28 @@ export default function NumberDrop() {
       </div>
       
       <div 
-        className="relative bg-white border-2 border-gray-300 rounded-md overflow-hidden shadow-lg"
+        className="relative bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-md overflow-hidden shadow-lg w-full"
         style={{
-          width: `${GRID_WIDTH * CELL_SIZE}px`,
-          height: `${GRID_HEIGHT * CELL_SIZE}px`,
+          maxWidth: `${GRID_WIDTH * CELL_SIZE_DEFAULT}px`,
+          aspectRatio: `${GRID_WIDTH} / ${GRID_HEIGHT}`,
         }}
       >
         {/* Grid cells */}
-        <div className="grid grid-cols-5 gap-0">
+        <div className="grid grid-cols-5 gap-0 h-full">
           {grid.map((row, y) =>
             row.map((cell, x) => (
               <div 
                 key={`${y}-${x}`}
                 className={`
-                  flex items-center justify-center font-bold text-lg
-                  ${cell.value === 0 ? 'bg-gray-100' : 
-                    cell.value === 2 ? 'bg-blue-100 text-blue-800' :
-                    cell.value === 4 ? 'bg-blue-200 text-blue-900' :
-                    cell.value === 8 ? 'bg-green-100 text-green-900' :
-                    'bg-yellow-100 text-yellow-900'}
-                  border border-gray-200
+                  flex items-center justify-center font-bold text-sm sm:text-lg
+                  ${cell.value === 0 ? 'bg-gray-100 dark:bg-gray-800' : 
+                    cell.value === 2 ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200' :
+                    cell.value === 4 ? 'bg-blue-200 dark:bg-blue-800/40 text-blue-900 dark:text-blue-100' :
+                    cell.value === 8 ? 'bg-green-100 dark:bg-green-900/40 text-green-900 dark:text-green-100' :
+                    'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-900 dark:text-yellow-100'}
+                  border border-gray-200 dark:border-gray-700
                   transition-colors duration-200
                 `}
-                style={{
-                  width: `${CELL_SIZE}px`,
-                  height: `${CELL_SIZE}px`,
-                }}
               >
                 {cell.value !== 0 && (
                   <motion.div
@@ -315,10 +311,10 @@ export default function NumberDrop() {
                 border border-gray-200 rounded-md
               `}
               style={{
-                width: `${CELL_SIZE - 4}px`,
-                height: `${CELL_SIZE - 4}px`,
-                left: `${currentBlock.x * CELL_SIZE + 2}px`,
-                top: `${currentBlock.y * CELL_SIZE + 2}px`,
+                width: `${100 / GRID_WIDTH}%`,
+                left: `${(currentBlock.x / GRID_WIDTH) * 100}%`,
+                top: `${(currentBlock.y / GRID_HEIGHT) * 100}%`,
+                height: `${100 / GRID_HEIGHT}%`,
                 transition: 'top 0.1s ease-out, left 0.1s ease-out',
               }}
             >
@@ -330,9 +326,9 @@ export default function NumberDrop() {
         {/* Game over overlay */}
         {gameOver && (
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
-            <div className="bg-white p-6 rounded-lg text-center">
-              <h2 className="text-2xl font-bold mb-4">Game Over!</h2>
-              <p className="mb-4">Your score: {score}</p>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg text-center">
+              <h2 className="text-2xl font-bold mb-4 dark:text-white">Game Over!</h2>
+              <p className="mb-4 dark:text-gray-300">Your score: {score}</p>
               <button 
                 onClick={resetGame}
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -346,14 +342,14 @@ export default function NumberDrop() {
         {/* Pause overlay */}
         {isPaused && (
           <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div className="bg-white p-6 rounded-lg">
-              <h2 className="text-2xl font-bold">Paused</h2>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg">
+              <h2 className="text-2xl font-bold dark:text-white">Paused</h2>
             </div>
           </div>
         )}
       </div>
       
-      <div className="mt-6 text-gray-600 text-sm">
+      <div className="mt-4 sm:mt-6 text-gray-600 dark:text-gray-400 text-sm">
         <p className="mb-2"><strong>How to play:</strong></p>
         <ul className="list-disc pl-5 space-y-1">
           <li>← → : Move block left/right</li>
@@ -361,6 +357,34 @@ export default function NumberDrop() {
           <li>Space : Drop block to bottom</li>
           <li>P : Pause/Resume game</li>
         </ul>
+      </div>
+      
+      {/* Mobile Controls */}
+      <div className="mt-4 grid grid-cols-3 gap-2 max-w-[200px] mx-auto sm:hidden">
+        <button
+          onClick={() => {
+            if (!currentBlock || gameOver || isPaused) return;
+            const newX = Math.max(0, currentBlock.x - 1);
+            if (gridRef.current[currentBlock.y][newX].value === 0) {
+              setCurrentBlock({ ...currentBlock, x: newX });
+            }
+          }}
+          className="p-3 bg-gray-200 dark:bg-gray-700 rounded-lg text-xl"
+        >⬅️</button>
+        <button
+          onClick={() => moveBlockDown()}
+          className="p-3 bg-gray-200 dark:bg-gray-700 rounded-lg text-xl"
+        >⬇️</button>
+        <button
+          onClick={() => {
+            if (!currentBlock || gameOver || isPaused) return;
+            const newX = Math.min(GRID_WIDTH - 1, currentBlock.x + 1);
+            if (gridRef.current[currentBlock.y][newX].value === 0) {
+              setCurrentBlock({ ...currentBlock, x: newX });
+            }
+          }}
+          className="p-3 bg-gray-200 dark:bg-gray-700 rounded-lg text-xl"
+        >➡️</button>
       </div>
     </div>
   );

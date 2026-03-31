@@ -195,7 +195,29 @@ export default function RedLightGreenLight() {
       <div 
         ref={gameAreaRef}
         className="relative w-full h-64 bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden flex flex-col items-center justify-center"
-        onClick={() => gameAreaRef.current?.focus()}
+        onClick={() => {
+          if (gameState === 'waiting' || gameState === 'lost') {
+            setPosition(0);
+            setScore(0);
+            setLevel(1);
+            setGameState('countdown');
+          }
+        }}
+        onTouchStart={(e) => {
+          if (gameState === 'waiting' || gameState === 'lost') {
+            setPosition(0);
+            setScore(0);
+            setLevel(1);
+            setGameState('countdown');
+            return;
+          }
+          if (gameState === 'greenlight') {
+            isMovingRef.current = true;
+          }
+        }}
+        onTouchEnd={() => {
+          isMovingRef.current = false;
+        }}
         tabIndex={0}
       >
         {/* Game area */}
@@ -272,7 +294,7 @@ export default function RedLightGreenLight() {
             <div className="text-3xl font-bold text-indigo-600">{countdown}</div>
           )}
           {gameState === 'waiting' || gameState === 'lost' ? (
-            <p className="text-sm text-gray-500 mt-2">Press SPACE to {gameState === 'lost' ? 'try again' : 'start'}</p>
+            <p className="text-sm text-gray-500 mt-2">Press SPACE or tap to {gameState === 'lost' ? 'try again' : 'start'}</p>
           ) : (
             <p className="text-sm text-gray-500 mt-2">
               Level {level} • {isMovingRef.current ? 'Moving!' : 'Stopped'}

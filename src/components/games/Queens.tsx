@@ -181,19 +181,19 @@ export default function Queens() {
   // Render the board
   const renderBoard = () => {
     return (
-      <div className="grid grid-cols-8 gap-1 bg-gray-200 dark:bg-gray-700 p-2 rounded-lg">
+      <div className="grid grid-cols-8 gap-0.5 sm:gap-1 bg-gray-200 dark:bg-gray-700 p-1 sm:p-2 rounded-lg">
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
             <motion.div
               key={`${rowIndex}-${colIndex}`}
               className={`
-                w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-xl cursor-pointer
+                w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center text-base sm:text-xl cursor-pointer
                 ${rowIndex % 2 === colIndex % 2 
                   ? 'bg-white dark:bg-gray-600' 
                   : 'bg-gray-100 dark:bg-gray-800'}
                 ${cell === 'blocked' ? 'bg-red-100 dark:bg-red-900' : ''}
                 rounded-sm select-none
-              `}
+              `}}
               onClick={() => handleCellClick(rowIndex, colIndex)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}

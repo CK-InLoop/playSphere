@@ -28,15 +28,15 @@ export default function GameLayout({
   onPauseToggle,
 }: GameLayoutProps) {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-4xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-3 sm:p-6"
       >
         <div className="mb-6">
-          <div className="flex items-center gap-4 mb-4">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4">
             {onBack ? (
               <button
                 onClick={onBack}
@@ -54,29 +54,29 @@ export default function GameLayout({
                 <FiArrowLeft className="w-5 h-5" />
               </Link>
             )}
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
               {title}
             </h1>
             
             {(typeof score !== 'undefined' || typeof highScore !== 'undefined') && (
-              <div className="ml-auto flex gap-4">
+              <div className="ml-auto flex gap-2 sm:gap-4">
                 {typeof score !== 'undefined' && (
                   <div className="text-right">
-                    <div className="text-sm text-gray-500 dark:text-gray-400">Score</div>
-                    <div className="font-bold">{score}</div>
+                    <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Score</div>
+                    <div className="font-bold text-sm sm:text-base">{score}</div>
                   </div>
                 )}
                 {typeof highScore !== 'undefined' && (
                   <div className="text-right">
-                    <div className="text-sm text-gray-500 dark:text-gray-400">High Score</div>
-                    <div className="font-bold">{highScore}</div>
+                    <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">High Score</div>
+                    <div className="font-bold text-sm sm:text-base">{highScore}</div>
                   </div>
                 )}
               </div>
             )}
             
             {(onRestart || onPauseToggle) && (
-              <div className="flex gap-2 ml-4">
+              <div className="flex gap-2 ml-auto sm:ml-4">
                 {onPauseToggle && (
                   <button
                     onClick={onPauseToggle}
@@ -97,7 +97,7 @@ export default function GameLayout({
             )}
           </div>
           
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
             {description}
           </p>
           

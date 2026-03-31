@@ -162,9 +162,9 @@ export default function ColorMatch() {
             exit={{ opacity: 0, y: 20 }}
             className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
           >
-            <div className="bg-white p-6 rounded-lg shadow-xl text-center">
-              <h3 className="text-2xl font-bold mb-4">Congratulations! 🎉</h3>
-              <p className="mb-4">You completed the game in {moves} moves!</p>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl text-center">
+              <h3 className="text-2xl font-bold mb-4 dark:text-white">Congratulations! 🎉</h3>
+              <p className="mb-4 dark:text-gray-300">You completed the game in {moves} moves!</p>
               <button
                 onClick={initializeGame}
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"

@@ -197,7 +197,7 @@ const Snake = () => {
         board.push(
           <div
             key={`${x}-${y}`}
-            className={`w-5 h-5 ${cellClass}`}
+            className={`aspect-square ${cellClass}`}
             style={{
               gridColumn: x + 1,
               gridRow: y + 1,
@@ -231,11 +231,10 @@ const Snake = () => {
       {/* Game Board */}
       <div className="flex justify-center mb-6">
         <div 
-          className="grid bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700"
+          className="grid bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700 w-full max-w-[400px] aspect-square"
           style={{
-            gridTemplateColumns: `repeat(${GRID_SIZE}, ${CELL_SIZE}px)`,
-            gridTemplateRows: `repeat(${GRID_SIZE}, ${CELL_SIZE}px)`,
-            width: 'fit-content',
+            gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)`,
+            gridTemplateRows: `repeat(${GRID_SIZE}, 1fr)`,
           }}
         >
           {renderBoard()}
