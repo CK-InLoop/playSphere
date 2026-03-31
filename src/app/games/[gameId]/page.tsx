@@ -165,43 +165,34 @@ export default function GamePage({ params }: { params: { gameId: string } }) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="mb-6">
-        <Link 
-          href="/games" 
-          className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
-        >
-          <FiArrowLeft className="mr-2" /> Back to all games
-        </Link>
-      </div>
-
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8">
-        <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">{game.title}</h1>
-        <p className="text-gray-600 dark:text-gray-300 mb-6">{game.description}</p>
-        
-        <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg mb-8">
-          <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">How to Play</h2>
-          <p className="text-gray-700 dark:text-gray-300">{game.instructions}</p>
+    <div>
+      {game.component ? (
+        <GameComponent gameId={game.component} />
+      ) : (
+        <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8">
+          <div className="mb-6">
+            <Link 
+              href="/games" 
+              className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+            >
+              <FiArrowLeft className="mr-2" /> Back to all games
+            </Link>
+          </div>
+          <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">{game.title}</h1>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">{game.description}</p>
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-lg p-6 text-center">
+            <p className="text-blue-800 dark:text-blue-200">
+              This game is coming soon! Check back later to play {game.title}.
+            </p>
+            <Link 
+              href="/games" 
+              className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors mt-4"
+            >
+              Browse other games
+            </Link>
+          </div>
         </div>
-
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
-          {game.component ? (
-            <GameComponent gameId={game.component} />
-          ) : (
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-lg p-6 text-center">
-              <p className="text-blue-800 dark:text-blue-200">
-                This game is coming soon! Check back later to play {game.title}.
-              </p>
-              <Link 
-                href="/games" 
-                className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-              >
-                Browse other games
-              </Link>
-            </div>
-          )}
-        </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -210,14 +201,21 @@ export default function GamePage({ params }: { params: { gameId: string } }) {
 export async function generateStaticParams() {
   return [
     { gameId: 'tic-tac-toe' },
+    { gameId: 'sudoku' },
+    { gameId: 'color-match' },
     { gameId: 'memory-match' },
-    { gameId: '2048' },
+    { gameId: 'number-drop' },
     { gameId: 'snake' },
+    { gameId: 'reaction-time' },
+    { gameId: 'whack-a-mole' },
     { gameId: 'flappy-bird' },
     { gameId: 'wordle' },
-    { gameId: 'hangman' },
-    { gameId: 'reaction-time' },
-    { gameId: 'math-quiz' },
     { gameId: 'breakout' },
+    { gameId: '2048' },
+    { gameId: 'hangman' },
+    { gameId: 'binary-puzzle' },
+    { gameId: 'queens' },
+    { gameId: 'red-light-green-light' },
+    { gameId: 'math-quiz' },
   ];
 }
